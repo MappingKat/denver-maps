@@ -18,13 +18,13 @@ var $svg, lastValue = 0;
 var data = [];
 dataBuilder(JSON.parse(fs.readFileSync(path.join(__dirname, '/data/categories/art_galleries.geojson'), 'utf8')), 'art');
 dataBuilder(JSON.parse(fs.readFileSync(path.join(__dirname, '/data/categories/classical_music.geojson'), 'utf8')), 'music');
-dataBuilder(JSON.parse(fs.readFileSync(path.join(__dirname, '/data/categories/museums.geojson'), 'utf8')), 'museum');
+dataBuilder(JSON.parse(fs.readFileSync(path.join(__dirname, '/data/categories/dispensaries.geojson'), 'utf8')), 'dispensary');
 dataBuilder(JSON.parse(fs.readFileSync(path.join(__dirname, '/data/categories/theatres.geojson'), 'utf8')), 'theatre');
 
 // Layer style
 var dataStyle = JSON.parse(fs.readFileSync(path.join(__dirname, '/data/style.json'), 'utf8'));
 
-var pois = ['poi-art', 'poi-music', 'poi-theatre', 'poi-museum'];
+var pois = ['poi-art', 'poi-music', 'poi-theatre', 'poi-dispensary'];
 
 function phoneFormatted(phone) {
   return phone
@@ -52,16 +52,16 @@ function dataBuilder(gj, type) {
 
 // Set bounds to New York, New York
 var bounds = [
-  [-74.44747924804688, 40.54198241319326], // Southwest coordinates
-  [-73.46282958984375, 40.93011520598305]  // Northeast coordinates
+  [-105.1,39.6], // Southwest coordinates
+  [-104.7,39.9]  // Northeast coordinates
 ];
 
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/cika7lsg6003p9fm1y5eet742',
   hash: true,
-  center: [-74.0015, 40.7268],
-  zoom: 14,
+  center: [-105.0000, 39.7297],
+  zoom: 11,
   maxBounds: bounds
 });
 
@@ -86,6 +86,7 @@ function addData() {
 
   dataStyle.forEach(function(style) {
     map.addLayer(style);
+    console.log(style);
   });
 }
 

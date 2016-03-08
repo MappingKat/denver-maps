@@ -1,12 +1,12 @@
 [
   {
-    "id": "poi-museum",
+    "id": "poi-dispensary",
     "interactive": true,
     "type": "symbol",
     "source": "geojson",
     "filter": [
       "all",
-      ["in", "type", "museum"]
+      ["in", "type", "dispensary"]
     ],
     "layout": {
       "icon-image": "{type}",
